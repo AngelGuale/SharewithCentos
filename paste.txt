@@ -1,4 +1,8 @@
-wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-rpm -Uvh remi-release-7*.rpm epel-release-7*.rpm
- yum install php php-gd php-mysql php-mcrypt
+echo ">>> Starting install script"
+sudo yum -y update
+
+echo ">>> Installing Apache, MySQL and PHP"
+sudo rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+sudo yum install -y nano git-core httpd php55w php55w-common php55w-mysql php55w-mcrypt php55w-gd
+sudo yum install -y yum-plugin-replace
+sudo yum replace -y mysql-libs --replace-with mysql55w-libs
